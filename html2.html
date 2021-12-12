@@ -5,12 +5,6 @@
     </head>
 
     <style>
-        iframe.absolute{
-            position: absolute;
-            left : 700px;
-            top : 550px;
-        }
-
         .title_name{
             display : block;
             width : 1000px;
@@ -80,7 +74,7 @@
             document.getElementById("year").innerHTML = data["year"];
             document.getElementById("month").innerHTML = data["month"];
             document.getElementById("day").innerHTML = data["day"];
-        }   
+        }  
     </script>
 
     <body>
@@ -112,16 +106,17 @@
                 </colgroup>
                 <tr>
                   <td>
-                      <img src="./fig.png" width="400"; height="400"; alt="코로나 그래프">  
+                      <img src=".\fig.png" width="400"; height="400"; alt="코로나 그래프">  
                   </td>
                   <td>
-                      <div class="center_align input_result_div_desgin" style="margin-bottom: 30px;">
+                      <div class="center_align input_result_div_desgin" style="margin-top: 25px;">
                           <span class="input_result_desgin" id="year"></span> 년 
                           <span class="input_result_desgin" id="month"></span> 월
                           <span class="input_result_desgin" id="day"></span> 일 이후의 결과
                       </div>
+
                       <div id="list" style="margin-top: 50px;">
-                          <iframe src="./string.txt" frameborder="0" height="250"
+                          <iframe src=".\string.txt" frameborder="0" height="250"
                                 width="100%" class="absolute" id="listFrame"></iframe>
                       </div>
                   </td>
@@ -129,4 +124,6 @@
             </table>
         </div>
     </body>
+
+  
 </html>
