@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <title>COVID -19 감염병 확산 예측</title>
+    </head>
+
+    <style>
+        .title_name{
+            display : block;
+            width : 1000px;
+            height : 130px;
+            color : white;
+            background-color: #3366CC;
+        }
+
+        table{
+            height: 100px;
+            width: 1000px;
+        }
+
+        .table_design{
+            height: 100px;
+            width: 1000px;
+        }
+
+        .center_align{
+            display: block;
+            text-align: -webkit-center;
+        }
+
+        .input_design{
+            height: 20px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .input_button_design{
+            background-color: #3366CC;
+            color: white;
+            width: 60px;
+            height: 30px;
+            border: 1px solid grey;
+        }
+
+
+    </style>       	
+ 
+    <script type="text/javascript">
+        function dataSend(){
+            var date = new Date();
+            var year = date.getFullYear();
+        var month = date.getMonth()+1;
+            var day = date.getDate();
+
+            var urlInfo = "?year=" + year + "&month=" + month + "&day=" + day;
+
+            location.href = "html2.html" + urlInfo;
+            goPython();
+
+        }
+        function goPython(){
+            $.ajax({
+              url: "/Users/joseongjun/test/python/cho_covid.py",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            });
+        }
+    </script>
+
+    <body>
+        <div class="center_align">
+          감염병 예측 수리모델을 접목한
+        </div>
+        <div class="center_align">
+          <h1>COVID-19 감염병 확산 예측</h1>
+        </div>
+
+        <div class="center_align" style="padding-bottom: 30px;"> 
+            <div class="title_name">
+                <br/>
+                <span style="font-weight: bold;">
+                    감염병 예측 수리모델을 바탕으로 <br/> 
+                    covid-19 감염병 확신 및 재생산지수를 예측합니다. <br/><br/>
+                </span>
+                사용방법: 기간 입력후 '감염병 예측' 버튼 클릭
+            </div>
+        </div>
+
+
+        <div class="center_align">
+          <table style="border: 2px solid #3366CC;  position: relative;">
+            <!-- 
+             1.날짜 입력받기(예시 2020년 10월 21일 )
+             2.입력값 내부처리 (예시 20201021) 
+              3 버튼 누르면 두가지 실행
+              3-1./Users/joseongjun/test/python/cho_covid.py 파일을 입력 값과 shell 실행
+                      (실행문 python3 cho_covid.py --date=20211201)
+              3-2. html2.html 넘어가서 페이지 출력
+              나머지 다듬어주세요
+          -->
+              <tr>
+                  <td style="padding-top: 10px; padding-bottom: 5px; ">
+                      <center>
+                          <span style="margin-left: 20px; margin-right: 20px;">
+                          오늘 이후로 예측
+                          </span>
+                          <span>
+                              <button class="input_button_design" onclick="dataSend();">예측</button>
+                          </span>
+                      </center>
+                  </td>
+              </tr>
+          </table>
+        </div>
+    </body>
+</html>

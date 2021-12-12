@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>COVID -19 감염병 확산 예측</title>
+    </head>
+
+    <style>
+        iframe.absolute{
+            position: absolute;
+            left : 700px;
+            top : 550px;
+        }
+
+        .title_name{
+            display : block;
+            width : 1000px;
+            height : 130px;
+            color : white;
+            background-color: #3366CC;
+        }
+
+        table{
+            height: 100px;
+            width: 1000px;
+        }
+
+        .table_design{
+            height: 100px;
+            width: 1000px;
+        }
+
+        .center_align{
+            display: block;
+            text-align: -webkit-center;
+        }
+
+        .input_design{
+            height: 20px;
+            width: 80px;
+            text-align: center;
+        }
+
+        .input_button_design{
+            background-color: #3366CC;
+            color: white;
+            width: 60px;
+            height: 30px;
+            border: 1px solid grey;
+        }
+
+        .input_result_div_desgin{
+            border: 2px solid #3366CC;
+    
+            height: 70px;
+            line-height: 70px;
+        }
+
+        .input_result_desgin{
+            border: 2px solid #3366CC;
+            display: inline-block;
+            width: 60px;
+            margin-top: px;
+            line-height: 30px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        // 첫 번째 html에서 url로 넘긴 값 받아오기
+        window.onload = function () {
+            var url = document.location.href,
+                params = url.split('?')[1].split('&'),
+                data = {}, tmp;
+
+            for (var i = 0, l = params.length; i < l; i++) {
+                tmp = params[i].split('=');
+                data[tmp[0]] = tmp[1];
+            }
+
+            document.getElementById("year").innerHTML = data["year"];
+            document.getElementById("month").innerHTML = data["month"];
+            document.getElementById("day").innerHTML = data["day"];
+        }   
+    </script>
+
+    <body>
+
+        <div class="center_align">
+            감염병 예측 수리모델을 접목한
+        </div>
+        <div class="center_align">
+            <h1>COVID-19 감염병 확산 예측</h1>
+        </div>
+
+        <div class="center_align" style="padding-bottom: 30px;"> 
+            <div class="title_name">
+                <br/>
+                <span style="font-weight: bold;">
+                    감염병 예측 수리모델을 바탕으로 <br/> 
+                    covid-19 감염병 확신 및 재생산지수를 예측합니다. <br/><br/>
+                </span>
+                사용방법: 기간 입력후 '감염병 예측' 버튼 클릭
+            </div>
+        </div>
+
+
+        <div class="center_align">
+            <table style="border: 2px solid #3366CC;  position: relative;">
+                <colgroup>
+                    <col width="50%;">
+                    <col width="50%;">
+                </colgroup>
+                <tr>
+                  <td>
+                      <img src="/Users/joseongjun/test/python/output/fig.png" width="400"; height="400"; alt="코로나 그래프">  
+                  </td>
+                  <td>
+                      <div class="center_align input_result_div_desgin" style="margin-bottom: 30px;">
+                          <span class="input_result_desgin" id="year"></span> 년 
+                          <span class="input_result_desgin" id="month"></span> 월
+                          <span class="input_result_desgin" id="day"></span> 일 이후의 결과
+                      </div>
+
+                        <div id="list">
+                            <iframe src="/Users/joseongjun/test/python/output/string.txt" frameborder="0" height="400"
+                                width="100%" class="absolute"></iframe>
+                          </div>
+                  </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="list">
+            <iframe style="display: none;" src="/Users/joseongjun/test/python/output/string.txt" 
+                frameborder="0" height="400" width="100%" class="absolute"></iframe>
+        </div>
+    </body>
+</html>
